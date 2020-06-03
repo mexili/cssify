@@ -13,9 +13,9 @@ const cssnano = require('@node-minify/cssnano');
 const cors = require('cors');
 
 const app = express();
-app.use(cors())
-app.use(compression())
-app.use(helmet())
+app.use(cors());
+app.use(compression());
+app.use(helmet());
 app.use(express.json());
 
 const lookup = {
