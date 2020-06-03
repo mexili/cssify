@@ -1,2 +1,2 @@
-frontend/node_modules/
-frontend/yarn.lock
+client/node_modules/
+client/yarn.lock
