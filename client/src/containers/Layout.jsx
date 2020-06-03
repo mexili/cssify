@@ -1,10 +1,14 @@
 import React from "react";
-import Home from "./Home";
+
+import AppNavbar from "../components/AppNavbar/AppNavbar";
+import Playground from "../components/Playground/Playground";
 
 const Layout = () => {
   return (
     <>
-      <Home />
+      {/* <Home /> */}
+      <AppNavbar />
+      <Playground />
     </>
   );
 };
