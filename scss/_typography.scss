@@ -1,0 +1,153 @@
+body {
+    font-size: 1.25rem;
+    line-height: 1.5;
+    font-family: $sans-font, $native-sans-font;
+    font-weight: 400;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: normal;
+    font-family: $serif-font, $native-serif-font;
+    line-height: 1.5;
+    margin: 0;
+
+    &+p {
+        margin-top: 0;
+    }
+}
+@for $i from 1 through 6 {
+    h#{7 - $i} {
+        fontsize: $i * 1.4em;
+    }
+}
+
+a,
+ins,
+u {
+    text-decoration-skip: ink edges;
+}
+
+.size-1 {
+    font-size: 3.25rem;
+}
+
+.size-2 {
+    font-size: 2.75rem;
+}
+
+.size-3 {
+    font-size: 2.5rem;
+}
+
+.size-4 {
+    font-size: 2.15rem;
+}
+
+.size-5 {
+    font-size: 1.75rem;
+}
+
+.size-6 {
+    font-size: 1.5rem;
+}
+
+.size-7 {
+    font-size: 1.25rem;
+}
+
+a {
+    transition: color .2s, border-bottom .2s;
+    color: $link-dark;
+    text-decoration: none;
+    border-bottom: solid $link-dark 2px;
+    border-radius: 1px;
+    width: fit-content;
+
+    &:link,
+    &:visited {
+        color: $link-dark;
+    }
+
+    &:hover {
+        color: $link-light;
+        border-bottom: solid $link-light 2px;
+    }
+
+    &:active {
+        transition: color .2s;
+        color: $link-mid;
+    }
+}
+
+p {
+    margin: 1rem 0 1rem 0;
+}
+
+blockquote {
+    font-style: italic;
+    position: relative;
+    margin: 1rem 1rem 1rem 0;
+    padding-left: 2rem;
+
+    &::before {
+        content: '';
+        width: 2px;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: black;
+        border-radius: 2px;
+    }
+}
+
+strong,
+.title {
+    font-weight: 800;
+}
+
+.title {
+    font-family: $sans-font;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+.font-bold {
+    font-weight: bold;
+}
+
+.font-light {
+    font-weight: 200;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.scale-text {
+    font-size: calc(1em - (1vw/5));
+}
+
+.is-family-sans-serif {
+    font-family: $sans-font;
+}
+
+.is-family-serif {
+    font-family: $serif-font;
+}
