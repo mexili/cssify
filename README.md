@@ -28,7 +28,7 @@ Some developer skills. ;)
 
 ## Setup Guide Video
 
-I went ahead and put all the installation steps into a video! You can watch the CSSify Setup Guide here - 
+We went ahead and put all the installation steps into a video! You can watch the CSSify Setup Guide here - 
 
 https://www.youtube.com/watch?xyz
 
