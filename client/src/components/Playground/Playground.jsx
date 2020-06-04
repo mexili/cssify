@@ -24,9 +24,42 @@ import Table from "../Table/Table";
 
 const URL="http://localhost:8080"
 
+const Button = () => {
+  const formData = useRecoilValue(formSchemaObject);
+
+  return (<button
+    type="button"
+    className="bg-black white"
+    style={{
+      height: "60px",
+    }}
+
+    onClick={(e)=>{
+      e.preventDefault();
+      fetch(URL, {
+        method: "POST",
+        body: formData
+      })
+        .then(response => {
+          console.log(response);
+          return response;
+        })
+        .catch(e => {
+          console.log(e);
+        })
+      
+
+    }}
+
+  >
+    Get CSS!
+  </button>)
+}
+
+
+
 const Playground = () => {
   const [component, setComponent] = useRecoilState(selectedComponent);
-  const formData = useRecoilValue(formSchemaObject);
 
   const renderComponent = (comp) => {
     switch (comp) {
@@ -61,33 +94,7 @@ const Playground = () => {
     <div>
       <div className="banner">
         <h2>Create your own stylesheet.</h2>
-        <button
-          type="button"
-          className="bg-black white"
-          style={{
-            height: "60px",
-          }}
-
-          onClick={(e)=>{
-            e.preventDefault();
-            fetch(URL, {
-              method: "POST",
-              body: formData
-            })
-              .then(response => {
-                console.log(response);
-                return response;
-              })
-              .catch(e => {
-                console.log(e);
-              })
-            
-
-          }}
-
-        >
-          Get CSS!
-        </button>
+        <Button />
       </div>
       <ResizablePanels>
         <ComponentForm />
