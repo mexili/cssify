@@ -1,28 +1,59 @@
 import React from "react";
-import Button from "react-bootstrap/Button";
-import {formSchemaObject} from "../../store"
-import {useRecoilValue} from 'recoil';
+import { formSchemaObject } from "../../store";
+import { useRecoilValue } from "recoil";
 
 const ButtonGroup = () => {
   const formData = useRecoilValue(formSchemaObject);
   return (
     <>
-      <Button style={{backgroundColor: formData.blue??"blue"}} variant="primary">Blue</Button>{" "}
-      <Button style={{backgroundColor: formData.blue??"blue"}} variant="primary">Aqua</Button>{" "}
-      <Button style={{backgroundColor: formData.blue??"blue"}} variant="primary">Teal</Button>{" "}
-      <Button style={{backgroundColor: formData.blue??"blue"}} variant="primary">Olive</Button>{" "}
-      <Button style={{backgroundColor: formData.blue??"green"}} variant="primary">Green</Button>{" "}
-      <Button style={{backgroundColor: formData.blue??"lime"}} variant="primary">Lime</Button>{" "}
-      <Button style={{backgroundColor: formData.blue??"yellow"}} variant="primary">Yellow</Button>{" "}
-      <Button style={{backgroundColor: formData.blue??"orange"}} variant="primary">Orange</Button>{" "}
-      <Button style={{backgroundColor: formData.blue??"red"}} variant="primary">Red</Button>{" "}
-      <Button style={{backgroundColor: formData.blue??"fuchsia"}} variant="primary">Fuchsia</Button>{" "}
-      <Button style={{backgroundColor: formData.blue??"purple"}} variant="primary">Purple</Button>{" "}
-      <Button style={{backgroundColor: formData.blue??"maroon"}} variant="primary">Maroon</Button>{" "}
-      <Button style={{backgroundColor: formData.blue??"white"}} variant="primary">White</Button>{" "}
-      <Button style={{backgroundColor: formData.blue??"gray"}} variant="primary">Gray</Button>{" "}
-      <Button style={{backgroundColor: formData.blue??"silver"}} variant="primary">Silver</Button>{" "}
-      <Button style={{backgroundColor: formData.blue??"black"}} variant="primary">Black</Button>{" "}
+      <button
+        style={{ backgroundColor: formData.blue ?? "skyblue" }}
+        className="white"
+      >
+        Primary
+      </button>{" "}
+      <button
+        style={{ backgroundColor: formData.blue ?? "fuchsia" }}
+        className="white"
+      >
+        Secondary
+      </button>{" "}
+      <button
+        style={{ backgroundColor: formData.blue ?? "green" }}
+        className="white"
+      >
+        Success
+      </button>{" "}
+      <button
+        style={{ backgroundColor: formData.blue ?? "yellow" }}
+        className="white"
+      >
+        Warning
+      </button>{" "}
+      <button
+        style={{ backgroundColor: formData.blue ?? "red" }}
+        className="white"
+      >
+        Danger
+      </button>{" "}
+      <button
+        style={{ backgroundColor: formData.blue ?? "navy" }}
+        className="white"
+      >
+        Info
+      </button>{" "}
+      <button
+        style={{ backgroundColor: formData.blue ?? "grey" }}
+        className="black"
+      >
+        Light
+      </button>{" "}
+      <button
+        style={{ backgroundColor: formData.blue ?? "black" }}
+        className="white"
+      >
+        Dark
+      </button>
     </>
   );
 };

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Navbar from "react-bootstrap/Navbar";
 import logo from "../../assets/images/icon.svg";
 class AppNavbar extends Component {
   constructor(props) {
@@ -9,18 +8,25 @@ class AppNavbar extends Component {
   render() {
     return (
       <>
-        <Navbar bg="dark" variant="dark" sticky="top">
-          <Navbar.Brand href="#home">
+        <div className="flex-center pt-5 pb-5">
+          <div
+            href="#home"
+            className="flex-center"
+            style={{
+              flexDirection: "column",
+            }}
+          >
             <img
-              alt=""
+              alt="cssify logo"
               src={logo}
-              width="40"
-              height="40"
-              className="d-inline-block align-top"
+              width="60"
+              height="60"
+              className="mr-2 mt-2"
             />{" "}
-            <span style={{ fontSize: 25 }}>CSSify</span>
-          </Navbar.Brand>
-        </Navbar>
+            <h1 className="size-1">CSSify</h1>
+            <p className="italic">Scaffold a CSS framework in seconds</p>
+          </div>
+        </div>
       </>
     );
   }

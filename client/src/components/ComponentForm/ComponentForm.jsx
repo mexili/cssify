@@ -14,8 +14,8 @@ const ComponentForm = (props) => {
           <span>Button</span>
         </label>
         <label>
-          <input type="radio" name="component" value="card" />
-          <span>Card</span>
+          <input type="radio" name="component" value="typography" />
+          <span>Typography</span>
         </label>
         <label>
           <input type="radio" name="component" value="alert" />

@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import ResizablePanels from "./ResizablePanels/ResizablePanels";
 import ReactForm from "../../containers/ReactForm";
-import Button from "react-bootstrap/Button";
 
 import "./Playground.css";
 import ComponentForm from "../ComponentForm/ComponentForm";
 import ButtonGroup from "../ButtonGroup/ButtonGroup";
-import CardComp from "../CardComp/CardComp";
+import Typography from "../Typography/Typography";
 
 class Playground extends Component {
   constructor() {
@@ -26,8 +25,8 @@ class Playground extends Component {
     switch (comp) {
       case "button":
         return <ButtonGroup />;
-      case "card":
-        return <CardComp />;
+      case "typography":
+        return <Typography />;
       default:
         return null;
     }
@@ -38,7 +37,15 @@ class Playground extends Component {
       <div>
         <div className="banner">
           <h2>Create your own stylesheet.</h2>
-          <Button variant="info">Get CSS!</Button>
+          <button
+            type="button"
+            className="bg-black white"
+            style={{
+              height: "60px",
+            }}
+          >
+            Get CSS!
+          </button>
         </div>
         <ResizablePanels>
           <ComponentForm getComponent={this.getSelectedComponent} />
