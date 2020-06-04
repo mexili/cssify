@@ -1,13 +1,14 @@
 import React from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 
 import ResizablePanels from "./ResizablePanels/ResizablePanels";
 import ReactForm from "../../containers/ReactForm";
 
+
 import ComponentForm from "../ComponentForm/ComponentForm";
 import ButtonGroup from "../ButtonGroup/ButtonGroup";
 import Typography from "../Typography/Typography";
-import { selectedComponent } from "../../store";
+import { selectedComponent, formSchemaObject } from "../../store";
 
 import "./Playground.css";
 import CustomSizes from "../CustomSizes/CustomSizes";
@@ -20,8 +21,12 @@ import Container from "../Skeleton/Container";
 import Flexbox from "../Skeleton/Flexbox";
 import Table from "../Table/Table";
 
+
+const URL="http://localhost:8080"
+
 const Playground = () => {
   const [component, setComponent] = useRecoilState(selectedComponent);
+  const formData = useRecoilValue(formSchemaObject);
 
   const renderComponent = (comp) => {
     switch (comp) {
@@ -62,6 +67,24 @@ const Playground = () => {
           style={{
             height: "60px",
           }}
+
+          onClick={(e)=>{
+            e.preventDefault();
+            fetch(URL, {
+              method: "POST",
+              body: formData
+            })
+              .then(response => {
+                console.log(response);
+                return response;
+              })
+              .catch(e => {
+                console.log(e);
+              })
+            
+
+          }}
+
         >
           Get CSS!
         </button>
