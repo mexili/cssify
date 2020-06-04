@@ -1,9 +1,12 @@
 import React from "react";
+import { useRecoilState } from "recoil";
 import "./ComponentForm.css";
 
+import { selectedComponent } from "../../store";
 const ComponentForm = (props) => {
+  const [comp, setselectedComponent] = useRecoilState(selectedComponent);
   const setComponent = (event) => {
-    props.getComponent(event.target.value);
+    setselectedComponent(event.target.value);
   };
   return (
     <div>

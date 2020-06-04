@@ -1,27 +1,20 @@
-import React, { Component } from "react";
+import React from "react";
+import { useRecoilState } from "recoil";
+
 import ResizablePanels from "./ResizablePanels/ResizablePanels";
 import ReactForm from "../../containers/ReactForm";
 
-import "./Playground.css";
 import ComponentForm from "../ComponentForm/ComponentForm";
 import ButtonGroup from "../ButtonGroup/ButtonGroup";
 import Typography from "../Typography/Typography";
+import { selectedComponent } from "../../store";
 
-class Playground extends Component {
-  constructor() {
-    super();
-    this.state = {
-      selectedComponent: "",
-    };
-  }
+import "./Playground.css";
 
-  getSelectedComponent = (comp) => {
-    this.setState({
-      selectedComponent: comp,
-    });
-  };
+const Playground = () => {
+  const [component, setComponent] = useRecoilState(selectedComponent);
 
-  renderComponent = (comp) => {
+  const renderComponent = (comp) => {
     switch (comp) {
       case "button":
         return <ButtonGroup />;
@@ -32,38 +25,36 @@ class Playground extends Component {
     }
   };
 
-  render() {
-    return (
-      <div>
-        <div className="banner">
-          <h2>Create your own stylesheet.</h2>
-          <button
-            type="button"
-            className="bg-black white"
-            style={{
-              height: "60px",
-            }}
-          >
-            Get CSS!
-          </button>
-        </div>
-        <ResizablePanels>
-          <ComponentForm getComponent={this.getSelectedComponent} />
-          <ReactForm />
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              flexDirection: "column",
-            }}
-          >
-            <span>Preview</span>
-            {this.renderComponent(this.state.selectedComponent)}
-          </div>
-        </ResizablePanels>
+  return (
+    <div>
+      <div className="banner">
+        <h2>Create your own stylesheet.</h2>
+        <button
+          type="button"
+          className="bg-black white"
+          style={{
+            height: "60px",
+          }}
+        >
+          Get CSS!
+        </button>
       </div>
-    );
-  }
-}
+      <ResizablePanels>
+        <ComponentForm />
+        <ReactForm />
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            flexDirection: "column",
+          }}
+        >
+          <span>Preview</span>
+          {renderComponent(component)}
+        </div>
+      </ResizablePanels>
+    </div>
+  );
+};
 
 export default Playground;
