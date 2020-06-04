@@ -21,8 +21,40 @@ const ComponentForm = (props) => {
           <span>Typography</span>
         </label>
         <label>
-          <input type="radio" name="component" value="alert" />
-          <span>Alert</span>
+          <input type="radio" name="component" value="customSizes" />
+          <span>Custom Sizes</span>
+        </label>
+        <label>
+          <input type="radio" name="component" value="card" />
+          <span>Card</span>
+        </label>
+        <label>
+          <input type="radio" name="component" value="forms" />
+          <span>Forms</span>
+        </label>
+        <label>
+          <input type="radio" name="component" value="links" />
+          <span>Links</span>
+        </label>
+        <label>
+          <input type="radio" name="component" value="scaleText" />
+          <span>Scale Text</span>
+        </label>
+        <label>
+          <input type="radio" name="component" value="title" />
+          <span>Title</span>
+        </label>
+        <label>
+          <input type="radio" name="component" value="container" />
+          <span>Container</span>
+        </label>
+        <label>
+          <input type="radio" name="component" value="flexbox" />
+          <span>Flexbox</span>
+        </label>
+        <label>
+          <input type="radio" name="component" value="table" />
+          <span>Table</span>
         </label>
       </form>
     </div>

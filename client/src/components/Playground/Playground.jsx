@@ -10,6 +10,15 @@ import Typography from "../Typography/Typography";
 import { selectedComponent } from "../../store";
 
 import "./Playground.css";
+import CustomSizes from "../CustomSizes/CustomSizes";
+import Card from "../Card/Card";
+import CustomForms from "../CustomForms/CustomForms";
+import Links from "../Minimals/Links";
+import ScaleText from "../Minimals/ScaleText";
+import Title from "../Minimals/Title";
+import Container from "../Skeleton/Container";
+import Flexbox from "../Skeleton/Flexbox";
+import Table from "../Table/Table";
 
 const Playground = () => {
   const [component, setComponent] = useRecoilState(selectedComponent);
@@ -20,6 +29,24 @@ const Playground = () => {
         return <ButtonGroup />;
       case "typography":
         return <Typography />;
+      case "customSizes":
+        return <CustomSizes />;
+      case "card":
+        return <Card />;
+      case "forms":
+        return <CustomForms />;
+      case "links":
+        return <Links />;
+      case "scaleText":
+        return <ScaleText />;
+      case "title":
+        return <Title />;
+      case "container":
+        return <Container />;
+      case "flexbox":
+        return <Flexbox />;
+      case "table":
+        return <Table />;
       default:
         return null;
     }
