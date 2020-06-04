@@ -216,3 +216,7 @@ export const colors = atom({
     default: false
 });
 
+export const formSchemaObject = atom({
+    key: "formSchema",
+    default: {}
+})

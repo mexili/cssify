@@ -85,4 +85,4 @@ app.post('/', (req, res) => {
     })
 })
 
-app.listen(3000, () => console.log('CSSify listening on port 3000!'));
+app.listen(8080, () => console.log('CSSify backend listening on port 8080!'));
