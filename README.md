@@ -1,6 +1,40 @@
+<p align="center">
+  <img width="100" height="100" src="https://i.imgur.com/ziYXKJ8.png">
+</p>
+
 # CSSify
 
 Tired of using Bootstrap/Bulma, but don't want to scaffold a whole bunch of CSS on your own? CSSify to the rescue - make your own CSS framework!
+
+Reference of this project has been taken from https://modernizr.com/download
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+### Features
+
+1. 
+2. 
+3. 
+4. 
+5. **Actively under development**
+
+### Why CSSify?
+
+Coming soon
+
+## Requirements
+
+Some developer skills. ;)
+
+## Setup Guide Video
+
+We went ahead and put all the installation steps into a video! You can watch the CSSify Setup Guide here - 
+
+https://www.youtube.com/watch?xyz
+
+## How to Use
+
+
 
 ## Installation
 
