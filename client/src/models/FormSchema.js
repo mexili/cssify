@@ -1,7 +1,6 @@
 const formSchema = {
     title: "CSS Object detection",
     type: "object",
-    required: ["title"],
     properties: {
     "mobile": {type: "string"},
     "tablet": {type: "string"},
