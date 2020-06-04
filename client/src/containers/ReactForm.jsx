@@ -1,22 +1,32 @@
 import React from 'react';
 import Form from "@rjsf/core";
 import formSchema from '../models/FormSchema'
-import {blue} from '../store.js';
-import {useRecoilState} from 'recoil';
+import {blue, formSchemaObject} from '../store.js';
+import {useRecoilState, useSetRecoilState} from 'recoil';
+
+import * as _ from 'lodash';
 
 
 const log = (type) => console.log.bind(console, type);
 
 const ReactForm = ()=> {
-    const [bgcolor, setBgColor] = useRecoilState(blue);
+    const  setFormSchemaObject = useSetRecoilState(formSchemaObject);
+    const  setBgColor = useSetRecoilState(blue);
+    const updateForm = _.debounce(async ({formData}, e) => {
+        // if(JSON.stringify(formData)!==JSON.stringify(getFormSchemaObject)) {
+            setFormSchemaObject(formData)
+            console.log(formData)
+        // }
+    })
 
 
-
+    let schema = {...formSchema}
     return (
         <div>
-            <Form schema={formSchema}
-                onChange={log("HEllo WOrl")}
+            <Form schema={schema}
+                onChange={updateForm}
                 onSubmit={({formData}, e)=>{
+                    e.preventDefault();
                     setBgColor(formData.blue)
                     console.log(formData)
 
