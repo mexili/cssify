@@ -23,7 +23,6 @@
     "node-sass": "^4.14.1",
     "node-sass-json-importer": "^4.3.0",
     "uuid": "^8.1.0"
-    "node-sass-json-importer": "^4.3.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
