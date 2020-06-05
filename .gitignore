@@ -1,5 +1,4 @@
 client/node_modules/
 client/yarn.lock
 backend/node_modules
-backend/temp
 .vscode/
