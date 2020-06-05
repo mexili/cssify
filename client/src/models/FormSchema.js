@@ -92,9 +92,6 @@ const uiSchema = {
   gray: { "ui:widget": "color" },
   silver: { "ui:widget": "color" },
   black: { "ui:widget": "color" },
-  "grid-cs": {
-    "ui:widget": "range",
-  },
 };
 
 export { formSchema, uiSchema };
