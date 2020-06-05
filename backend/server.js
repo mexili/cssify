@@ -36,6 +36,8 @@ const maincss = fs.readFileSync('./main.scss').toString()
 // TODO: rewrite file writing code to be async
 app.post('/', (req, res) => {
     let request_id = uuidv4()
+    console.log(`New request: ${request_id}`)
+    console.log(req.body)
 
     // create temp config file with user options
     let tempConfig = config
@@ -45,8 +47,13 @@ app.post('/', (req, res) => {
     Object.entries(req.body).forEach(([variable, value]) => {
         tempConfig[variable] = value
         console.log(`Setting variable ${variable} to ${value}`)
-        if (tempConfig[variable] == true && lookup[variable]) {
-            fs.appendFileSync(`./temp/main-${request_id}.scss`, `\n@import '../../scss/${lookup[variable]}'`)
+        if (value === true && lookup[variable]) {
+            fs.appendFileSync(`./temp/main-${request_id}.scss`, `\n@import '../../scss/${lookup[variable]}';`)
+        }
+    })
+    Object.entries(config).forEach(([variable, value]) => {
+        if (config[variable] === true) {
+            fs.appendFileSync(`./temp/main-${request_id}.scss`, `\n@import '../../scss/${lookup[variable]}';`)
         }
     })
     let newTempConfig = JSON.stringify(tempConfig, null, 2)
@@ -60,9 +67,11 @@ app.post('/', (req, res) => {
             outputStyle: 'compact'
         }, (compile_err, result) => {
             if (compile_err) throw compile_err
+
             // write output to unminified file
             fs.writeFile(`./temp/spirit-${request_id}.css`, result.css, write_err => {
                 if (write_err) throw write_err
+
                 // minify the file
                 minify({
                     compressor: cssnano,
@@ -70,19 +79,39 @@ app.post('/', (req, res) => {
                     output: `./temp/spirit-${request_id}.min.css`,
                     callback: (min_err, min) => {
                         if (min_err) throw min_err
+
                         // send minified version to client
-                        res.download(`./temp/spirit-${request_id}.min.css`, download_err => {
-                            // clean-up temp files
-                            fs.unlink(`./temp/spirit-${request_id}.min.css`, () => {console.log(`${request_id} cleaned (1/3)`)})
-                            fs.unlink(`./temp/spirit-${request_id}.css`, () => {console.log(`${request_id} cleaned (2/3)`)})
-                            fs.unlink(`./temp/main-${request_id}.scss`, () => {console.log(`${request_id} cleaned (3/3)`)})
+                        res.download(`./temp/spirit-${request_id}.min.css`, 'spirit.min.css', download_err => {
                             if (download_err) throw download_err
+                            // clean-up temp files
+                            fs.unlink(`./temp/spirit-${request_id}.min.css`, () => {
+                                console.log(`${request_id} cleaned (1/3)`)
+                            })
+                            fs.unlink(`./temp/spirit-${request_id}.css`, () => {
+                                console.log(`${request_id} cleaned (2/3)`)
+                            })
+                            fs.unlink(`./temp/main-${request_id}.scss`, () => {
+                                console.log(`${request_id} cleaned (3/3)`)
+                            })
                         })
                     }
                 });
             });
         });
     })
+})
+
+app.get('/', (req, res) => {
+    fs.readdir('./temp', (err, files) => {
+        files.forEach(file => {
+            fs.unlink(`./temp/${file}`, (err) => {
+                if (err) throw err
+                console.log(`${file} deleted!`);
+            })
+        });
+      });
+    console.log('Nuking temp configs!')
+    res.send('Nuking temp configs!')
 })
 
 app.listen(8080, () => console.log('CSSify backend listening on port 8080!'));
