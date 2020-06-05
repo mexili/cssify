@@ -10,13 +10,13 @@ const ButtonGroup = () => {
         style={{ backgroundColor: formData.navy ?? "navy" }}
         className="white"
       >
-        Primary
+        Navy
       </button>{" "}
       <button
         style={{ backgroundColor: formData.blue ?? "blue" }}
         className="white"
       >
-        Secondary
+        Blue
       </button>{" "}
       <button
         style={{ backgroundColor: formData.aqua ?? "aqua" }}
@@ -44,66 +44,58 @@ const ButtonGroup = () => {
       </button>{" "}
       <button
         style={{ backgroundColor: formData.lime ?? "lime" }}
-        className="black"
+        className="white"
       >
         Lime
       </button>{" "}
       <button
         style={{ backgroundColor: formData.yellow ?? "yellow" }}
-        className="red"
+        className="white"
       >
         Yellow
       </button>
-
       <button
         style={{ backgroundColor: formData.yellow ?? "orange" }}
-        className="orange"
+        className="white"
       >
         Orange
       </button>
-      
       <button
         style={{ backgroundColor: formData.red ?? "red" }}
-        className="black"
+        className="white"
       >
         Red
       </button>
-
       <button
         style={{ backgroundColor: formData.fuchsia ?? "fuchsia" }}
-        className="black"
+        className="white"
       >
         Fuchsia
       </button>
-
       <button
         style={{ backgroundColor: formData.maroon ?? "maroon" }}
-        className="red"
+        className="white"
       >
         Maroon
       </button>
-
       <button
         style={{ backgroundColor: formData.white ?? "white" }}
-        className="red"
+        className="black"
       >
         White
       </button>
-
       <button
         style={{ backgroundColor: formData.gray ?? "gray" }}
-        className="red"
+        className="white"
       >
         Gray
       </button>
-
       <button
         style={{ backgroundColor: formData.black ?? "black" }}
-        className="red"
+        className="white"
       >
         Black
       </button>
-
     </>
   );
 };

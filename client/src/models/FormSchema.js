@@ -2,7 +2,7 @@ const formSchema = {
   title: "CSS Object detection",
   type: "object",
   properties: {
-    navy: { type: "string", default: "#151ce6" },
+    navy: { type: "string" },
     blue: { type: "string" },
     aqua: { type: "string" },
     teal: { type: "string" },
