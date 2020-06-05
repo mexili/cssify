@@ -29,11 +29,13 @@ CSSify provides a solution to all these problems, by offering a rock solid base 
 
 Some developer skills. ;)
 
-## Demo Video
+## Demo Video & DevPost
 
 You can watch the teaser and demo in the attached video.
 
 https://youtu.be/TSHjpUm7TlY
+
+https://devpost.com/software/cssify
 
 
 ## Installation
