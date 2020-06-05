@@ -37,14 +37,38 @@ const formSchema = {
     "link-mid": {type: "string"},
     "sans-font": {type: "string"},
     "serif-font": {type: "string"},
-    "utils": {type: "boolean"},
-    "res_helpers": {type: "boolean"},
-    "grid": {type: "boolean"},
-    "forms": {type: "boolean"},
-    "type": {type: "boolean"},
-    "layout": {type: "boolean"},
-    "elements": {type: "boolean"},
-    "colors": {type: "boolean"}
+    "utils": {
+      type: "boolean",
+      default: true
+    },
+    "res_helpers": {
+      type: "boolean",
+      default: true
+    },
+    "grid": {
+      type: "boolean",
+      default: true
+    },
+    "forms": {
+      type: "boolean",
+      default: true
+    },
+    "type": {
+      type: "boolean",
+      default: true
+    },
+    "layout": {
+      type: "boolean",
+      default: true
+    },
+    "elements": {
+      type: "boolean",
+      default: true
+    },
+    "colors": {
+      type: "boolean",
+      default: true
+  }
     }
   };
 
