@@ -2,7 +2,7 @@ import React from 'react';
 import Form from "@rjsf/core";
 import formSchema from '../models/FormSchema'
 import {blue, formSchemaObject} from '../store.js';
-import {useRecoilState, useSetRecoilState} from 'recoil';
+import {useSetRecoilState} from 'recoil';
 
 import * as _ from 'lodash';
 
