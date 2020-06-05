@@ -1,3 +1,5 @@
+/* eslint-disable import/first */
+const FileDownload = require("js-file-download");
 import React from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 
@@ -20,9 +22,10 @@ import Title from "../Minimals/Title";
 import Container from "../Skeleton/Container";
 import Flexbox from "../Skeleton/Flexbox";
 import Table from "../Table/Table";
+import fileDownload from "js-file-download";
 
 
-const URL="http://localhost:8080"
+const URL="http://localhost:8080/"
 
 const Button = () => {
   const formData = useRecoilValue(formSchemaObject);
@@ -34,15 +37,23 @@ const Button = () => {
       height: "60px",
     }}
 
-    onClick={(e)=>{
-      e.preventDefault();
+    onClick = {e => {
+      e.preventDefault()
       fetch(URL, {
         method: "POST",
         body: formData
       })
         .then(response => {
-          console.log(response);
-          return response;
+          return response.text();
+        })
+        .then(res => {
+          fetch(`${URL}${res}`)
+          .then(res => {
+            return res.text()
+          })
+          .then(content => {
+            FileDownload(content, 'stylesheet.css')
+          })
         })
         .catch(e => {
           console.log(e);

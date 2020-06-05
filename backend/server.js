@@ -2,6 +2,7 @@ const fs = require('fs');
 const {
     v4: uuidv4
 } = require('uuid');
+const path = require('path');
 const express = require('express');
 const helmet = require('helmet')
 const sass = require('node-sass');
@@ -79,21 +80,8 @@ app.post('/', (req, res) => {
                     output: `./temp/spirit-${request_id}.min.css`,
                     callback: (min_err, min) => {
                         if (min_err) throw min_err
-
                         // send minified version to client
-                        res.download(`./temp/spirit-${request_id}.min.css`, 'spirit.min.css', download_err => {
-                            if (download_err) throw download_err
-                            // clean-up temp files
-                            fs.unlink(`./temp/spirit-${request_id}.min.css`, () => {
-                                console.log(`${request_id} cleaned (1/3)`)
-                            })
-                            fs.unlink(`./temp/spirit-${request_id}.css`, () => {
-                                console.log(`${request_id} cleaned (2/3)`)
-                            })
-                            fs.unlink(`./temp/main-${request_id}.scss`, () => {
-                                console.log(`${request_id} cleaned (3/3)`)
-                            })
-                        })
+                        res.status(200).send(`spirit-${request_id}.min.css`);
                     }
                 });
             });
@@ -101,17 +89,13 @@ app.post('/', (req, res) => {
     })
 })
 
-app.get('/', (req, res) => {
-    fs.readdir('./temp', (err, files) => {
-        files.forEach(file => {
-            fs.unlink(`./temp/${file}`, (err) => {
-                if (err) throw err
-                console.log(`${file} deleted!`);
-            })
-        });
-      });
-    console.log('Nuking temp configs!')
-    res.send('Nuking temp configs!')
+app.get('/:filename', (req, res) => {
+    let filename = req.params.filename;
+    console.log(filename)
+    res.download(`./temp/${filename}`, 'spirit.css', err => {
+        if (err) throw err
+        console.log('Sent!')
+    })
 })
 
 app.listen(8080, () => console.log('CSSify backend listening on port 8080!'));
