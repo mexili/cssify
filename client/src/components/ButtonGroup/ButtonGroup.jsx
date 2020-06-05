@@ -22,31 +22,31 @@ const ButtonGroup = () => {
         style={{ backgroundColor: formData.aqua ?? "aqua" }}
         className="white"
       >
-        Success
+        Aqua
       </button>{" "}
       <button
         style={{ backgroundColor: formData.teal ?? "teal" }}
         className="white"
       >
-        Warning
+        Teal
       </button>{" "}
       <button
         style={{ backgroundColor: formData.olive ?? "olive" }}
         className="white"
       >
-        Danger
+        Olive
       </button>{" "}
       <button
         style={{ backgroundColor: formData.green ?? "green" }}
         className="white"
       >
-        Info
+        Green
       </button>{" "}
       <button
         style={{ backgroundColor: formData.lime ?? "lime" }}
         className="black"
       >
-        Light
+        Lime
       </button>{" "}
       <button
         style={{ backgroundColor: formData.yellow ?? "yellow" }}

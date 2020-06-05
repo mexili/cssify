@@ -1,8 +1,11 @@
 import React from "react";
+import { formSchemaObject } from "../../store";
+import { useRecoilValue } from "recoil";
 
 const CustomForms = () => {
+  const formData = useRecoilValue(formSchemaObject);
   return (
-    <form action="#">
+    <form style={formData} action="#">
       <div className="field">
         <label for="name">Your name: </label>
         <input type="text" placeholder="John Smith" />

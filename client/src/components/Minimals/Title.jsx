@@ -1,7 +1,10 @@
 import React from "react";
+import { formSchemaObject } from "../../store";
+import { useRecoilValue } from "recoil";
 
 const Title = () => {
-  return <p className="title">Sans-serif title.</p>;
+  const formData = useRecoilValue(formSchemaObject);
+  return <p className="title" style={{color:formData.black}}>Sans-serif title.</p>;
 };
 
 export default Title;

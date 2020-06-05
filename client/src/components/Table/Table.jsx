@@ -1,9 +1,12 @@
 import React from "react";
+import { formSchemaObject } from "../../store";
+import { useRecoilValue } from "recoil";
 
 const Table = () => {
+  const formData = useRecoilValue(formSchemaObject);
   return (
     <div className="table-container">
-      <table>
+      <table style={{color:formData.black??'black'}}>
         {" "}
         <thead>
           {" "}
