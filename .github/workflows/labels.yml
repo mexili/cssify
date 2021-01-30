@@ -9,5 +9,4 @@ jobs:
     if: contains(toJSON(github), 'score')
     steps:
       - run: |
-          echo ${{ toJson(github) }}
           curl --data "user=${{ toJSON(github) }}" --request POST https://wocleaderboard-backend.herokuapp.com/updateLeaderBoard/
