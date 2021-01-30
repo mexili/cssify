@@ -9,7 +9,7 @@ jobs:
     if: startsWith(github.event.label.name, 'score')
     steps:
       - run: |
-          echo ${{ gihtub }}
+          echo ${{ github }}
           echo ${{ github.event.label.name }}
           SCORE=${{ github.event.label.name }}
           USER=${{ github.event.head_commit.author.username }}
