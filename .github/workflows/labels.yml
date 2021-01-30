@@ -9,8 +9,5 @@ jobs:
     if: contains(toJson(github), 'score')
     steps:
       - run: |
-          SCORE=${{ github.event.pull_request.label.name }}
-          USER=${{ github.event.head_commit.author.username }}
-          echo ${{ github.event.head_commit.message }}
-          echo $SCORE,$USER
-          curl --data "user=${{ toJson(github) }}&score=${{ github }}" --request POST https://wocleaderboard-backend.herokuapp.com/updateLeaderBoard/
+          echo ${{ toJson(github) }}
+          curl --data "user=${{ toJson(github) }}" --request POST https://wocleaderboard-backend.herokuapp.com/updateLeaderBoard/
