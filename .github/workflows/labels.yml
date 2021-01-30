@@ -6,7 +6,7 @@ on:
 jobs:
   add-score:
     runs-on: ubuntu-latest
-    if: contains(github.event.pull_request.labels.*.name, 'score')
+    if: startsWith(github.event.pull_request.labels.*.name, 'score')
     steps:
       - run: |
           echo ${{ github.event.label.name }}
