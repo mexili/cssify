@@ -1,0 +1,16 @@
+name: 'Label Actions'
+on: 
+  pull_request:
+    types: labeled
+
+jobs:
+  add-score:
+    runs-on: ubuntu-latest
+    if: contains(github.event.pull_request.labels.*.name, 'score')
+    steps:
+      - run: |
+          SCORE=$(`echo ${{ github.event.head_commit.message }}` | cut -d '|' -f 2)
+          USER=${{ github.event.head_commit.author.username }}
+          echo ${{ github.event.head_commit.message }}
+          echo $SCORE,$USER
+          curl --data "user=$USER&score=$SCORE" --request POST https://wocleaderboard-backend.herokuapp.com/updateLeaderBoard/
