@@ -1,11 +1,10 @@
 /* eslint-disable import/first */
 const FileDownload = require("js-file-download");
-import React from "react";
+import React, { useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 
 import ResizablePanels from "./ResizablePanels/ResizablePanels";
 import ReactForm from "../../containers/ReactForm";
-
 
 import ComponentForm from "../ComponentForm/ComponentForm";
 import ButtonGroup from "../ButtonGroup/ButtonGroup";
@@ -23,51 +22,56 @@ import Container from "../Skeleton/Container";
 import Flexbox from "../Skeleton/Flexbox";
 import Table from "../Table/Table";
 import fileDownload from "js-file-download";
+import loadingGif from "../../assets/images/loading.gif";
 
-
-const URL="http://localhost:8080/"
+const URL = "http://localhost:8080/";
 
 const Button = () => {
   const formData = useRecoilValue(formSchemaObject);
 
-  return (<button
-    type="button"
-    className="bg-black white"
-    style={{
-      height: "60px",
-    }}
+  const [loading, setLoading] = useState(false);
 
-    onClick = {e => {
-      e.preventDefault()
-      fetch(URL, {
-        method: "POST",
-        body: formData
-      })
-        .then(response => {
-          return response.text();
+  return (
+    <button
+      type="button"
+      className="bg-black white"
+      style={{
+        height: "60px",
+      }}
+      onClick={(e) => {
+        e.preventDefault();
+        setLoading(true);
+        fetch(URL, {
+          method: "POST",
+          body: formData,
         })
-        .then(res => {
-          fetch(`${URL}${res}`)
-          .then(res => {
-            return res.text()
+          .then((response) => {
+            return response.text();
           })
-          .then(content => {
-            FileDownload(content, 'stylesheet.css')
+          .then((res) => {
+            fetch(`${URL}${res}`)
+              .then((res) => {
+                return res.text();
+              })
+              .then((content) => {
+                FileDownload(content, "stylesheet.css");
+              });
+            setLoading(false);
           })
-        })
-        .catch(e => {
-          console.log(e);
-        })
-      
-
-    }}
-
-  >
-    Get CSS!
-  </button>)
-}
-
-
+          .catch((e) => {
+            console.log(e);
+            setLoading(false);
+          });
+      }}
+    >
+      {loading ? (
+        <img src={loadingGif} height="30" width="auto" />
+      ) : (
+        <span>Get CSS!</span>
+      )}
+    </button>
+  );
+};
 
 const Playground = () => {
   const [component, setComponent] = useRecoilState(selectedComponent);
