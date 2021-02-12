@@ -4,10 +4,13 @@
   "description": "Backend to CSSify",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon server.js",
+    "server": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "client": "cd ../client && npm start",
     "dev": "concurrently --names \"server,client\" \"npm run server --silent\" \"npm run client --silent\""
+  },
+  "engines": {
+    "node": "<=14.15.4"
   },
   "keywords": [],
   "author": "Siddharth S",
