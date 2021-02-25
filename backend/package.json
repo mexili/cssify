@@ -16,7 +16,7 @@
   "author": "Siddharth S",
   "license": "MIT",
   "dependencies": {
-    "@node-minify/core": "^5.3.0",
+    "@node-minify/core": "^6.2.0",
     "@node-minify/cssnano": "^5.3.0",
     "compression": "^1.7.4",
     "concurrently": "^5.2.0",
