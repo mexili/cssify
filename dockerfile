@@ -1,4 +1,5 @@
-FROM node:14.15.4
+FROM node:14
+
 # docker hub and look 14.15
 
 # ls -> app
@@ -6,11 +7,13 @@ FROM node:14.15.4
 
 RUN mkdir -p /app/backend
 
-WORKDIR /app/backend
+WORKDIR /usr/app/backend
 
-COPY backend/* /app/backend/
+COPY package*.json ./ 
 
-# /app/backend
+#backend/* . /
+
+# 
 
 RUN npm install
 

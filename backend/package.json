@@ -25,6 +25,7 @@
     "helmet": "^3.22.0",
     "node-sass": "^4.14.1",
     "node-sass-json-importer": "^4.3.0",
+    "socket.io": "^3.1.2",
     "uuid": "^8.1.0"
   },
   "devDependencies": {
