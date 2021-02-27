@@ -1,10 +1,5 @@
-FROM node:14
-
-# docker hub and look 14.15
-
-# ls -> app
-
-
+FROM node:13
+// Node version should be lessar than 14.15.x .
 RUN mkdir -p /app/backend
 
 WORKDIR /usr/app/backend
